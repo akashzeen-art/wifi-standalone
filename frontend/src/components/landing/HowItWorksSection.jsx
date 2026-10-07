@@ -23,7 +23,7 @@ const steps = [
     icon: Download,
     step: '03',
     title: 'Download the app',
-    desc: 'Download the Windows desktop app. Install it and sign in with your account credentials.',
+    desc: 'Get the app for Windows or Android. Install it and sign in with your account credentials.',
     color: 'from-violet-500 to-violet-600',
     connector: true,
   },

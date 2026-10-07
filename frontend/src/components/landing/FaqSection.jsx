@@ -6,11 +6,15 @@ import { FadeUp } from '../ui/Motion'
 const faqs = [
   {
     q: 'What is WiFiExtender and how does it work?',
-    a: 'WiFiExtender is a SaaS platform that turns your Windows laptop into a WiFi hotspot. You download our desktop app, activate your license key, and start sharing your internet connection with other devices — all managed from a beautiful web dashboard.',
+    a: 'WiFiExtender is a SaaS platform that turns your Windows laptop or Android phone into a WiFi hotspot. You download our app for Windows or Android, activate your license key, and start sharing your internet connection with other devices — all managed from a beautiful web dashboard.',
+  },
+  {
+    q: 'Which devices and platforms are supported?',
+    a: 'WiFiExtender is available for Windows and Android. On Windows, you need Windows 10 or 11 and a WiFi adapter that supports hosted network mode (most modern laptops do). On Android, any phone running Android 8.0 or newer works — just allow installs from unknown sources when installing the APK.',
   },
   {
     q: 'Do I need any special hardware?',
-    a: 'No special hardware required. You just need a Windows 10 or 11 laptop with a WiFi adapter that supports hosted network mode (most modern laptops do). The app uses built-in Windows netsh commands under the hood.',
+    a: 'No special hardware required. Your existing Windows laptop or Android phone is all you need. On Windows the app uses built-in netsh commands under the hood, so no extra drivers are installed.',
   },
   {
     q: 'How many devices can connect to my hotspot?',
@@ -18,7 +22,7 @@ const faqs = [
   },
   {
     q: 'Can I block specific devices from my hotspot?',
-    a: 'Yes. From the Devices page in your dashboard or the desktop app, you can block any connected device with a single click. Blocked devices are immediately disconnected and cannot reconnect until you unblock them.',
+    a: 'Yes. From the Devices page in your dashboard or the Windows and Android apps, you can block any connected device with a single click. Blocked devices are immediately disconnected and cannot reconnect until you unblock them.',
   },
   {
     q: 'Is my hotspot connection secure?',
@@ -26,11 +30,11 @@ const faqs = [
   },
   {
     q: 'What happens when my subscription expires?',
-    a: 'When your subscription expires, your license key becomes invalid and the desktop app will stop allowing new hotspot sessions. Your account and data remain intact. You can renew or upgrade your plan at any time.',
+    a: 'When your subscription expires, your license key becomes invalid and the app will stop allowing new hotspot sessions. Your account and data remain intact. You can renew or upgrade your plan at any time.',
   },
   {
-    q: 'Can I use WiFiExtender on multiple laptops?',
-    a: 'Each license key is tied to one active session at a time. If you need to use it on multiple machines simultaneously, you\'ll need separate subscriptions. Contact us for team or enterprise pricing.',
+    q: 'Can I use WiFiExtender on multiple devices?',
+    a: 'Each license key is tied to one active session at a time, whether on Windows or Android. If you need to use it on multiple devices simultaneously, you\'ll need separate subscriptions. Contact us for team or enterprise pricing.',
   },
 ]
 

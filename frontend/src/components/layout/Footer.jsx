@@ -37,7 +37,7 @@ export default function Footer() {
               <span className="font-bold text-white">WiFiExtender</span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
-              Turn your laptop into a powerful WiFi hotspot. Share internet, monitor devices, and stay in control.
+              Turn your Windows laptop or Android phone into a powerful WiFi hotspot. Share internet, monitor devices, and stay in control.
             </p>
           </div>
 

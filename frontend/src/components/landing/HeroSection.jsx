@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useAnimationFrame, useMotionValue, useSpring } from 'framer-motion'
 import { Wifi, Download, ArrowRight, Shield, Activity, Smartphone, Laptop, Tv } from 'lucide-react'
+import { WindowsIcon, AndroidIcon } from '../ui/PlatformIcons'
 
 /* ── Animated WiFi rings ── */
 function WifiRings({ x, y, delay = 0, color = '#3b6ef5' }) {
@@ -224,7 +225,7 @@ export default function HeroSection() {
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="text-5xl md:text-6xl lg:text-[62px] font-extrabold text-white leading-[1.07] tracking-tight mb-6"
             >
-              Turn Your Laptop Into a{' '}
+              Turn Your Laptop or Phone Into a{' '}
               <span className="relative inline-block">
                 <span className="gradient-text-light">Powerful WiFi</span>
                 <motion.span
@@ -245,7 +246,7 @@ export default function HeroSection() {
               transition={{ duration: 0.55, delay: 0.38 }}
               className="text-lg md:text-xl text-slate-400 leading-relaxed mb-10"
             >
-              Share, extend, and manage internet connections with one click. Monitor devices, block intruders, and track bandwidth — all from a beautiful dashboard.
+              Share, extend, and manage internet connections with one click — on <span className="text-white font-semibold">Windows</span> and <span className="text-white font-semibold">Android</span>. Monitor devices, block intruders, and track bandwidth from a beautiful dashboard.
             </motion.p>
 
             {/* CTAs */}
@@ -253,7 +254,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-3 mb-12"
+              className="flex flex-col sm:flex-row gap-3 mb-6"
             >
               <Link to="/download" className="btn-primary text-[15px] py-4 px-8 group">
                 <Download className="w-4 h-4" />
@@ -269,6 +270,30 @@ export default function HeroSection() {
               <Link to="/pricing" className="btn-secondary text-[15px] py-4 px-8 bg-white/5 text-white border-white/15 hover:bg-white/10 hover:border-white/25 shadow-none hover:shadow-none backdrop-blur-sm">
                 View Pricing
               </Link>
+            </motion.div>
+
+            {/* Platforms */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.58 }}
+              className="flex flex-wrap items-center gap-3 mb-10"
+            >
+              <span className="text-xs font-medium uppercase tracking-wider text-slate-500">Available on</span>
+              {[
+                { icon: WindowsIcon, label: 'Windows', sub: '10 / 11',   iconClass: 'text-brand-300' },
+                { icon: AndroidIcon, label: 'Android', sub: '8.0+',      iconClass: 'text-emerald-400' },
+              ].map(({ icon: Icon, label, sub, iconClass }) => (
+                <Link
+                  key={label}
+                  to="/download"
+                  className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 backdrop-blur-sm transition-colors duration-200 hover:border-white/25 hover:bg-white/10"
+                >
+                  <Icon className={`w-4 h-4 ${iconClass}`} />
+                  <span className="text-sm font-semibold text-white">{label}</span>
+                  <span className="text-[11px] text-slate-400">{sub}</span>
+                </Link>
+              ))}
             </motion.div>
 
             {/* Live stats row */}
