@@ -51,7 +51,7 @@ const strengthMeta = [
 ]
 
 const perks = [
-  'Free 7-day trial, no credit card',
+  'Works on Windows and Android',
   'Start hotspot in under 60 seconds',
   'Monitor & block devices in real time',
   'Cancel anytime',
@@ -119,7 +119,7 @@ export default function RegisterPage() {
             Start sharing WiFi in minutes
           </h2>
           <p className="text-blue-100 leading-relaxed mb-8">
-            Create your free account and get your hotspot running today.
+            Create your account and get your hotspot running today.
           </p>
           <ul className="space-y-3">
             {perks.map(p => (
@@ -150,7 +150,7 @@ export default function RegisterPage() {
           </Link>
 
           <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight mb-1">Create your account</h1>
-          <p className="text-slate-500 mb-8">Free trial — no credit card required</p>
+          <p className="text-slate-500 mb-8">Get your hotspot running in minutes</p>
 
           {errors.form && (
             <motion.div

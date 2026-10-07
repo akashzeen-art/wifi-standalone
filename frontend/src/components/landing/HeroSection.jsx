@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useAnimationFrame, useMotionValue, useSpring } from 'framer-motion'
-import { Wifi, Download, ArrowRight, Zap, Shield, Activity, Smartphone, Laptop, Tv } from 'lucide-react'
+import { Wifi, Download, ArrowRight, Shield, Activity, Smartphone, Laptop, Tv } from 'lucide-react'
 
 /* ── Animated WiFi rings ── */
 function WifiRings({ x, y, delay = 0, color = '#3b6ef5' }) {
@@ -255,9 +255,9 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-3 mb-12"
             >
-              <Link to="/register" className="btn-primary text-[15px] py-4 px-8 group">
-                <Zap className="w-4 h-4" />
-                Start Free Trial
+              <Link to="/download" className="btn-primary text-[15px] py-4 px-8 group">
+                <Download className="w-4 h-4" />
+                Download App
                 <motion.span
                   className="inline-block"
                   animate={{ x: [0, 3, 0] }}
@@ -266,9 +266,8 @@ export default function HeroSection() {
                   <ArrowRight className="w-4 h-4" />
                 </motion.span>
               </Link>
-              <Link to="/download" className="btn-secondary text-[15px] py-4 px-8 bg-white/5 text-white border-white/15 hover:bg-white/10 hover:border-white/25 shadow-none hover:shadow-none backdrop-blur-sm">
-                <Download className="w-4 h-4" />
-                Download App
+              <Link to="/pricing" className="btn-secondary text-[15px] py-4 px-8 bg-white/5 text-white border-white/15 hover:bg-white/10 hover:border-white/25 shadow-none hover:shadow-none backdrop-blur-sm">
+                View Pricing
               </Link>
             </motion.div>
 

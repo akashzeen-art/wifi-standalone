@@ -51,7 +51,7 @@ export default function SubscriptionPage() {
       api.get('/subscriptions'),
       api.get('/subscriptions/licenses'),
     ]).then(([p, s, l]) => {
-      setPlans(p.data)
+      setPlans(p.data.filter(plan => plan.planType !== 'FREE_TRIAL'))
       setSubs(s.data)
       setLicenses(l.data)
     }).catch(() => toast.error('Failed to load subscription data'))
@@ -210,11 +210,10 @@ export default function SubscriptionPage() {
       <h2 className="text-lg font-bold text-slate-900 mb-4">
         {activeSub ? 'Upgrade your plan' : 'Choose a plan'}
       </h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-10">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
         {plans.map((plan, i) => {
           const isCurrent  = activeSub?.plan?.id === plan.id
           const isLifetime = plan.planType === 'LIFETIME'
-          const isTrial    = plan.planType === 'FREE_TRIAL'
 
           return (
             <motion.div
@@ -239,7 +238,7 @@ export default function SubscriptionPage() {
               <div className="flex items-baseline gap-0.5 mb-1">
                 <span className={`text-3xl font-extrabold ${plan.popular || isLifetime ? 'text-white' : 'text-slate-900'}`}>${plan.price}</span>
                 <span className={`text-xs ${plan.popular || isLifetime ? 'text-blue-200' : 'text-slate-400'}`}>
-                  {isLifetime ? '' : isTrial ? ' free' : '/mo'}
+                  {isLifetime ? '' : '/mo'}
                 </span>
               </div>
 
@@ -270,7 +269,6 @@ export default function SubscriptionPage() {
                 {requesting === plan.id
                   ? <div className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" />
                   : isCurrent ? 'Current plan'
-                  : isTrial   ? 'Start Free Trial'
                   : isLifetime ? <><Infinity className="w-3.5 h-3.5" /> Get Lifetime</>
                   : <><Zap className="w-3.5 h-3.5" /> Get Started</>
                 }

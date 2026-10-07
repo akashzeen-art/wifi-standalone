@@ -7,7 +7,7 @@ const steps = [
     icon: UserPlus,
     step: '01',
     title: 'Create your account',
-    desc: 'Sign up in seconds. No credit card required for the free trial. Just your email and a password.',
+    desc: 'Sign up in seconds with just your email and a password.',
     color: 'from-brand-500 to-brand-600',
     connector: true,
   },

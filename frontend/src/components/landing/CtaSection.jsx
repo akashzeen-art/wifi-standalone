@@ -29,11 +29,11 @@ export default function CtaSection() {
                 Ready to share your <span className="gradient-text-light">WiFi?</span>
               </h2>
               <p className="text-lg text-slate-400 mb-10 max-w-lg mx-auto">
-                Join 50,000+ users. Start your free trial today — no credit card required.
+                Join 50,000+ users. Get your hotspot live in under 60 seconds.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/register" className="btn-primary px-8 py-3.5">
-                  Get started free <ChevronRight className="w-4 h-4" />
+                  Get started <ChevronRight className="w-4 h-4" />
                 </Link>
                 <Link
                   to="/pricing"

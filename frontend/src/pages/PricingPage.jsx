@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Check, Zap, Infinity, Clock, ChevronRight, Star } from 'lucide-react'
+import { Check, Zap, Infinity, ChevronRight, Star } from 'lucide-react'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import { FadeUp, StaggerContainer, StaggerItem } from '../components/ui/Motion'
@@ -10,7 +10,6 @@ import useAuthStore from '../store/authStore'
 import { toast } from '../store/toastStore'
 
 const TYPE_META = {
-  FREE_TRIAL: { label: 'Free Trial', icon: Clock,    color: 'from-emerald-500 to-teal-500',   badge: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
   MONTHLY:    { label: 'Monthly',    icon: Zap,      color: 'from-brand-500 to-brand-600',    badge: 'bg-brand-50 text-brand-700 border-brand-200'       },
   LIFETIME:   { label: 'Lifetime',   icon: Infinity, color: 'from-violet-500 to-violet-600',  badge: 'bg-violet-50 text-violet-700 border-violet-200'    },
 }
@@ -42,7 +41,7 @@ export default function PricingPage() {
 
   useEffect(() => {
     api.get('/subscriptions/plans')
-      .then(r => setPlans(r.data))
+      .then(r => setPlans(r.data.filter(p => p.planType !== 'FREE_TRIAL')))
       .catch(() => {})
       .finally(() => setLoading(false))
   }, [])
@@ -92,12 +91,11 @@ export default function PricingPage() {
               <div className="w-8 h-8 border-2 border-brand-500 border-t-transparent rounded-full animate-spin" />
             </div>
           ) : (
-            <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5" stagger={0.08}>
+            <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5" stagger={0.08}>
               {plans.map((plan) => {
                 const meta = TYPE_META[plan.planType] || TYPE_META.MONTHLY
                 const Icon = meta.icon
                 const isLifetime = plan.planType === 'LIFETIME'
-                const isTrial    = plan.planType === 'FREE_TRIAL'
 
                 return (
                   <StaggerItem key={plan.id}>
@@ -143,7 +141,7 @@ export default function PricingPage() {
                             ${plan.price}
                           </span>
                           <span className={`text-xs font-medium ${plan.popular || isLifetime ? 'text-blue-200' : 'text-slate-400'}`}>
-                            {isLifetime ? ' one-time' : isTrial ? ' free' : '/mo'}
+                            {isLifetime ? ' one-time' : '/mo'}
                           </span>
                         </div>
 
@@ -177,11 +175,9 @@ export default function PricingPage() {
                         >
                           {requesting === plan.id
                             ? <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                            : isTrial
-                              ? 'Start Free Trial'
-                              : isLifetime
-                                ? <><Infinity className="w-4 h-4" /> Get Lifetime</>
-                                : <><ChevronRight className="w-4 h-4" /> Request Plan</>
+                            : isLifetime
+                              ? <><Infinity className="w-4 h-4" /> Get Lifetime</>
+                              : <><ChevronRight className="w-4 h-4" /> Request Plan</>
                           }
                         </button>
                       </div>
